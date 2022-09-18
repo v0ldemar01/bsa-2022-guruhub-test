@@ -40,6 +40,8 @@ scripts:
       echo $UPDATED_BUILD_NUMBER
       echo $UPDATED_VERSION_NAME
       echo $UPDATED_VERSION_NAME > "$FCI_BUILD_DIR/mobile/android/app/versionName"
+      cat "$FCI_BUILD_DIR/mobile/android/app/versionName"
+      cat "$FCI_BUILD_DIR/mobile/android/app/versionCode"
 workflows:
   react-native-android:
     name: React Native Android App
