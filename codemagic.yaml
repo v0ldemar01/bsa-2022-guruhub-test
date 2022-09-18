@@ -36,7 +36,6 @@ workflows:
       groups:
         - keystore_credentials
         - env_vars
-        - google_play
       vars:
         PACKAGE_NAME: 'com.guruhub'
     triggering:
@@ -69,8 +68,3 @@ workflows:
           cd android && ./gradlew bundleRelease
     artifacts:
       - android/app/build/outputs/**/*.aab
-    publishing:
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: internal
-        submit_as_draft: true
