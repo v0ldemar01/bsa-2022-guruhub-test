@@ -33,10 +33,6 @@ scripts:
       else
         UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
       fi
-      export UPDATED_BUILD_NUMBER
-  - &set_android_version_code_version_name
-    name: Set version code and version name
-    script: |
       echo $UPDATED_BUILD_NUMBER > "$FCI_BUILD_DIR/mobile/android/app/versionCode"
       echo "1.0.$UPDATED_BUILD_NUMBER" > "$FCI_BUILD_DIR/mobile/android/app/versionName"
       cat "$FCI_BUILD_DIR/mobile/android/app/versionCode"
@@ -74,7 +70,6 @@ workflows:
       - *set_up_keys
       - *set-env-vars
       - *set_up_android_updated_build_number
-      - *set_android_version_code_version_name
       - name: Build Android release
         script: |
           cd android && ./gradlew clean bundleRelease
