@@ -33,12 +33,10 @@ scripts:
       else
         UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
       fi
-      cat "$FCI_BUILD_DIR/mobile/android/app/versionCode"
+
       echo $UPDATED_BUILD_NUMBER > "$FCI_BUILD_DIR/mobile/android/app/versionCode"
-      cat "$FCI_BUILD_DIR/mobile/android/app/versionName"
-      UPDATED_VERSION_NAME=$(cat "$FCI_BUILD_DIR/mobile/android/app/versionName" | awk -F. -v OFS=. '{$NF = 500 ; print}')
-      echo $UPDATED_BUILD_NUMBER
-      echo $UPDATED_VERSION_NAME
+
+      UPDATED_VERSION_NAME=$(cat "$FCI_BUILD_DIR/mobile/android/app/versionName" | awk -F. -v OFS=. '{$NF = $UPDATED_BUILD_NUMBER ; print}')
       echo $UPDATED_VERSION_NAME > "$FCI_BUILD_DIR/mobile/android/app/versionName"
       cat "$FCI_BUILD_DIR/mobile/android/app/versionName"
       cat "$FCI_BUILD_DIR/mobile/android/app/versionCode"
