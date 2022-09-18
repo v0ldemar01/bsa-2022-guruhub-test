@@ -36,6 +36,7 @@ workflows:
       groups:
         - keystore_credentials
         - env_vars
+        - google_play
       vars:
         PACKAGE_NAME: 'com.guruhub'
     triggering:
