@@ -33,6 +33,7 @@ scripts:
       else
         UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
       fi
+      export UPDATED_BUILD_NUMBER
   - &set_android_version_code_version_name
     name: Set version code and version name
     script: |
