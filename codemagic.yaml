@@ -37,6 +37,7 @@ scripts:
       echo $UPDATED_BUILD_NUMBER > "$FCI_BUILD_DIR/mobile/android/app/versionCode"
 
       UPDATED_VERSION_NAME=$(<"$FCI_BUILD_DIR/mobile/android/app/versionName" | awk -F. -v OFS=. '{$NF = $UPDATED_BUILD_NUMBER ; print}')
+      echo $UPDATED_BUILD_NUMBER
       echo $UPDATED_VERSION_NAME
       echo $UPDATED_VERSION_NAME > "$FCI_BUILD_DIR/mobile/android/app/versionName"
 workflows:
