@@ -33,10 +33,12 @@ scripts:
       else
         UPDATED_BUILD_NUMBER=$(($LATEST_GOOGLE_PLAY_BUILD_NUMBER + 1))
       fi
+
       echo $UPDATED_BUILD_NUMBER > "$FCI_BUILD_DIR/mobile/android/app/versionCode"
-      echo "1.0.$UPDATED_BUILD_NUMBER" > "$FCI_BUILD_DIR/mobile/android/app/versionName"
-      cat "$FCI_BUILD_DIR/mobile/android/app/versionCode"
-      cat "$FCI_BUILD_DIR/mobile/android/app/versionName"
+
+      UPDATED_VERSION_NAME=$(<"$FCI_BUILD_DIR/mobile/android/app/versionName" | awk -F. -v OFS=. '{$NF = $UPDATED_BUILD_NUMBER ; print}')
+      echo $UPDATED_VERSION_NAME
+      echo $UPDATED_VERSION_NAME > "$FCI_BUILD_DIR/mobile/android/app/versionName"
 workflows:
   react-native-android:
     name: React Native Android App
