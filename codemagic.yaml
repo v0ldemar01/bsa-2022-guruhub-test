@@ -35,7 +35,8 @@ scripts:
       fi
 
       echo $UPDATED_BUILD_NUMBER > "$FCI_BUILD_DIR/mobile/android/app/versionCode"
-      UPDATED_VERSION_NAME=$(cat "$FCI_BUILD_DIR/mobile/android/app/versionName" | awk -F. -v PATCH_NUMBER=$UPDATED_BUILD_NUMBER -v OFS=. '{$NF = PATCH_NUMBER ; print}')
+      UPDATED_VERSION_NAME=$(cat "$FCI_BUILD_DIR/mobile/android/app/versionName"
+      | awk -F. -v PATCH_NUMBER=$UPDATED_BUILD_NUMBER -v OFS=. '{$NF = PATCH_NUMBER ; print}')
       echo $UPDATED_VERSION_NAME > "$FCI_BUILD_DIR/mobile/android/app/versionName"
       cat "$FCI_BUILD_DIR/mobile/android/app/versionName"
       cat "$FCI_BUILD_DIR/mobile/android/app/versionCode"
